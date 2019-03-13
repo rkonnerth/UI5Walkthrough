@@ -1,26 +1,27 @@
 sap.ui.define([
 	"sap/ui/base/ManagedObject",
-	"sap/ui/core/Fragment"
-], function (ManagedObject, Fragment) {
+	"sap/ui/core/Fragment",
+	"sap/ui/core/syncStyleClass"
+], function (ManagedObject, Fragment, syncStyleClass) {
 	"use strict";
 
 	return ManagedObject.extend("sap.ui.demo.walkthrough.controller.HelloDialog", {
 
-		constructor : function (oView) {
+		constructor: function (oView) {
 			this._oView = oView;
 		},
 
-		exit : function () {
+		exit: function () {
 			delete this._oView;
 		},
 
-		open : function () {
+		open: function () {
 			var oView = this._oView;
 
 			// create dialog lazily
 			if (!oView.byId("helloDialog")) {
 				var oFragmentController = {
-					onCloseDialog : function () {
+					onCloseDialog: function () {
 						oView.byId("helloDialog").close();
 					}
 				};
